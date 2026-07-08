@@ -3,71 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline Web Arcade Hub</title>
+    <title>Retro Arcade Dashboard</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
             margin: 0;
             padding: 40px 20px;
-            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         h1 {
             color: #58a6ff;
-            font-size: 2rem;
+            text-align: center;
+            font-size: 2.2rem;
             margin-bottom: 5px;
         }
         .subtitle {
+            text-align: center;
             color: #8b949e;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 40px;
         }
-        .menu-list {
-            max-width: 500px;
-            margin: 0 auto;
+        .game-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
-        .game-link {
+        .game-row {
             background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+        .game-row:hover {
+            border-color: #58a6ff;
+            background-color: #1f242c;
+        }
+        .game-info {
+            flex: 1;
+        }
+        .game-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0 0 4px 0;
+        }
+        .game-year {
+            font-size: 0.9rem;
+            color: #8b949e;
+            font-weight: normal;
+            margin-left: 8px;
+        }
+        .game-desc {
+            font-size: 0.95rem;
+            color: #8b949e;
+            margin: 0;
+            line-height: 1.4;
+        }
+        .play-btn {
+            background-color: #21262d;
             color: #58a6ff;
             border: 1px solid #30363d;
             border-radius: 6px;
-            padding: 14px 20px;
+            padding: 10px 20px;
             text-decoration: none;
-            font-size: 1.1rem;
             font-weight: 600;
-            text-align: left;
-            transition: all 0.2s ease;
+            font-size: 1rem;
+            white-space: nowrap;
+            transition: all 0.2s;
         }
-        .game-link:hover {
-            background-color: #21262d;
-            border-color: #58a6ff;
+        .play-btn:hover {
+            background-color: #58a6ff;
             color: #ffffff;
+            border-color: #58a6ff;
         }
     </style>
 </head>
 <body>
 
-    <h1>🎮 Web Arcade Cabinet</h1>
-    <div class="subtitle">Select a game below to launch it instantly in your browser.</div>
+    <div class="container">
+        <h1>🎮 Web Arcade Dashboard</h1>
+        <div class="subtitle">Select a game below to launch it instantly in your browser.</div>
 
-    <div class="menu-list">
-        <!-- Exact folder paths matching your repository structure -->
-        <a class="game-link" href="./computer-space/">Computer Space (1971)</a>
-        <a class="game-link" href="./pong/">Pong (1972)</a>
-        <a class="game-link" href="./gun-fight/">Gun Fight (1975)</a>
-        <a class="game-link" href="./breakout/">Breakout (1976)</a>
-        <a class="game-link" href="./space-invaders/">Space Invaders (1978)</a>
-        <a class="game-link" href="./galaxian/">Galaxian (1979)</a>
-        <a class="game-link" href="./asteroids/">Asteroids (1979)</a>
-        <a class="game-link" href="./lunar-lander/">Lunar Lander (1979)</a>
-        <a class="game-link" href="./pac-man/">Pac-Man (1980)</a>
-        <a class="game-link" href="./centipede/">Centipede (1980)</a>
-        <a class="game-link" href="./missile-command/">Missile Command (1980)</a>
-        <a class="game-link" href="./defender/">Defender (1981)</a>
+        <div class="game-list">
+            <!-- 1. Computer Space -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Computer Space <span class="game-year">(1971)</span></p>
+                    <p class="game-desc">The first commercially sold coin-operated video game. Newtonian physics with guided missiles, two AI saucers, and monochrome CRT visuals.</p>
+                </div>
+                <a class="play-btn" href="./computer-space/">Play Game</a>
+            </div>
+
+            <!-- 2. Pong -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Pong <span class="game-year">(1972)</span></p>
+                    <p class="game-desc">The Atari original. Authentic 8-segment paddle deflection, progressive ball acceleration, and classic square wave audio.</p>
+                </div>
+                <a class="play-btn" href="./pong/">Play Game</a>
+            </div>
+
+            <!-- 3. Gun Fight -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Gun Fight <span class="game-year">(1975)</span></p>
+                    <p class="game-desc">The Midway classic. Two cowboys duel around destructible cacti and pine trees with an AI opponent option.</p>
+                </div>
+                <a class="play-btn" href="./gun-fight/">Play Game</a>
+            </div>
+
+            <!-- 4. Breakout -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Breakout <span class="game-year">(1976)</span></p>
+                    <p class="game-desc">Smash through 8 rows of colored bricks. Progressive ball speed and paddle shrinking mechanics.</p>
+                </div>
+                <a class="play-btn" href="./breakout/">Play Game</a>
+            </div>
+
+            <!-- 5. Space Invaders -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Space Invaders <span class="game-year">(1978)</span></p>
+                    <p class="game-desc">Defend Earth from descending alien formations with your laser cannon. Pixel-accurate sprites and destructible shields.</p>
+                </div>
+                <a class="play-btn" href="./space-invaders/">Play Game</a>
+            </div>
+
+            <!-- 6. Galaxian -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Galaxian <span class="game-year">(1979)</span></p>
+                    <p class="game-desc">The classic Namco shooter featuring dive-bombing aliens with complex attack paths and a scrolling starfield.</p>
+                </div>
+                <a class="play-btn" href="./galaxian/">Play Game</a>
+            </div>
+
+            <!-- 7. Asteroids -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Asteroids <span class="game-year">(1979)</span></p>
+                    <p class="game-desc">Pilot your ship through an asteroid field, blast rocks into fragments, and dodge flying UFOs.</p>
+                </div>
+                <a class="play-btn" href="./asteroids/">Play Game</a>
+            </div>
+
+            <!-- 8. Lunar Lander -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Lunar Lander <span class="game-year">(1979)</span></p>
+                    <p class="game-desc">Guide your lunar module to a safe landing using careful fuel management over procedural terrain.</p>
+                </div>
+                <a class="play-btn" href="./lunar-lander/">Play Game</a>
+            </div>
+
+            <!-- 9. Pac-Man -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Pac-Man <span class="game-year">(1980)</span></p>
+                    <p class="game-desc">Navigate the maze, eat dots, and dodge ghosts. Power pellets let you turn the tables and chase them back.</p>
+                </div>
+                <a class="play-btn" href="./pac-man/">Play Game</a>
+            </div>
+
+            <!-- 10. Centipede -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Centipede <span class="game-year">(1980)</span></p>
+                    <p class="game-desc">Blast the descending centipede as it winds through a mushroom field. Features original wave cycling.</p>
+                </div>
+                <a class="play-btn" href="./centipede/">Play Game</a>
+            </div>
+
+            <!-- 11. Missile Command -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Missile Command <span class="game-year">(1980)</span></p>
+                    <p class="game-desc">Defend your six cities from incoming nuclear missiles using three anti-missile defense batteries.</p>
+                </div>
+                <a class="play-btn" href="./missile-command/">Play Game</a>
+            </div>
+
+            <!-- 12. Defender -->
+            <div class="game-row">
+                <div class="game-info">
+                    <p class="game-title">Defender <span class="game-year">(1981)</span></p>
+                    <p class="game-desc">Defend humanoids from alien abduction across a fast, horizontally scrolling space landscape.</p>
+                </div>
+                <a class="play-btn" href="./defender/">Play Game</a>
+            </div>
+        </div>
     </div>
 
 </body>
