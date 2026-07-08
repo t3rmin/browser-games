@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Web Arcade Hub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #58a6ff;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            color: #8b949e;
+            font-size: 1rem;
+            margin-bottom: 40px;
+        }
+        .menu-list {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .game-link {
+            background-color: #161b22;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .game-link:hover {
+            background-color: #21262d;
+            border-color: #58a6ff;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 Web Arcade Cabinet</h1>
+    <div class="subtitle">Select a game below to launch it instantly in your browser.</div>
+
+    <div class="menu-list">
+        <!-- Exact folder paths matching your repository structure -->
+        <a class="game-link" href="./computer-space/">Computer Space (1971)</a>
+        <a class="game-link" href="./pong/">Pong (1972)</a>
+        <a class="game-link" href="./gun-fight/">Gun Fight (1975)</a>
+        <a class="game-link" href="./breakout/">Breakout (1976)</a>
+        <a class="game-link" href="./space-invaders/">Space Invaders (1978)</a>
+        <a class="game-link" href="./galaxian/">Galaxian (1979)</a>
+        <a class="game-link" href="./asteroids/">Asteroids (1979)</a>
+        <a class="game-link" href="./lunar-lander/">Lunar Lander (1979)</a>
+        <a class="game-link" href="./pac-man/">Pac-Man (1980)</a>
+        <a class="game-link" href="./centipede/">Centipede (1980)</a>
+        <a class="game-link" href="./missile-command/">Missile Command (1980)</a>
+        <a class="game-link" href="./defender/">Defender (1981)</a>
+    </div>
+
+</body>
+</html>
