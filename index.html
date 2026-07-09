@@ -288,32 +288,24 @@
             display: none !important;
         }
     </style>
-
     <script>
-        // Submit when user presses Enter key
+        // Submit when user presses Enter key inside the input box
         document.getElementById('pass-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 checkPassword();
             }
         });
 
-        async function checkPassword() {
+        function checkPassword() {
             const input = document.getElementById('pass-input').value;
             const errorMsg = document.getElementById('error-msg');
-            
-            // Hash text input so plain-text "apexretro-_-" is hidden from view-source
-            const msgBuffer = new TextEncoder().encode(input);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashedInput = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
-            // Matches SHA-256 hash of "apexretro-_-"
-            const expectedHash = '4b1767664ff4b8dfcb056b7f369ee6287da2369fc6507ea9940177dfd2f6ff96';
-
-            if (hashedInput === expectedHash) {
+            // Directly matches your key string
+            if (input === "apexretro-_-") {
+                // Hide the lock screen
                 document.getElementById('gate-screen').style.display = 'none';
                 
-                // Show the hidden dashboard content
+                // Reveal the dashboard layout
                 const dashboard = document.querySelector('.container');
                 if (dashboard) {
                     dashboard.style.setProperty('display', 'block', 'important');
