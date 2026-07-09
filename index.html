@@ -203,6 +203,126 @@
                             </div>
         </div>
     </div>
+    <!-- 1. THE PASSWORD GATE CONTAINER -->
+    <div id="gate-screen">
+        <div class="gate-box">
+            <h2>🔒 Access Restricted</h2>
+            <p style="color: #8b949e; margin-bottom: 20px;">Enter the access key to unlock the dashboard.</p>
+            <input type="password" id="pass-input" placeholder="••••••••" autofocus>
+            <br>
+            <button onclick="checkPassword()">Unlock</button>
+            <div id="error-msg"></div>
+        </div>
+    </div>
+
+    <!-- 2. THE VISUAL STYLES AND MASKING SCRIPT -->
+    <style>
+        #gate-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #0d1117;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .gate-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        .gate-box h2 {
+            color: #58a6ff;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .gate-box input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .gate-box input[type="password"]:focus {
+            border-color: #58a6ff;
+        }
+        .gate-box button {
+            background-color: #21262d;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .gate-box button:hover {
+            background-color: #58a6ff;
+            color: #ffffff;
+            border-color: #58a6ff;
+        }
+        #error-msg {
+            color: #ff7b72;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            min-height: 20px;
+        }
+        /* Immediately hide the dashboard container until password is correct */
+        .container {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        // Submit when user presses Enter key
+        document.getElementById('pass-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        async function checkPassword() {
+            const input = document.getElementById('pass-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            
+            // Hash text input so plain-text "apexretro-_-" is hidden from view-source
+            const msgBuffer = new TextEncoder().encode(input);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashedInput = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            // Matches SHA-256 hash of "apexretro-_-"
+            const expectedHash = '4b1767664ff4b8dfcb056b7f369ee6287da2369fc6507ea9940177dfd2f6ff96';
+
+            if (hashedInput === expectedHash) {
+                document.getElementById('gate-screen').style.display = 'none';
+                
+                // Show the hidden dashboard content
+                const dashboard = document.querySelector('.container');
+                if (dashboard) {
+                    dashboard.style.setProperty('display', 'block', 'important');
+                }
+            } else {
+                errorMsg.textContent = 'Invalid key. Please try again.';
+                document.getElementById('pass-input').value = '';
+            }
+        }
+    </script>
 </body>
 </html>
- 
