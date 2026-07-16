@@ -20,6 +20,11 @@ class Dino {
         // Init Sprite
         this.sprite = new Image;
         this.sprite.src = "images/sprite.png";
+        
+        // FIX 2: Wait for the image to completely load before starting the loops
+        this.sprite.onload = () => {
+            this.render();
+        };
     }
     drawDino() {
         this.ctx.drawImage(this.sprite, this.dinos[this.dino].sx, 0, 95, 100, 80, this.canvas.height-75, 75, 75)
@@ -46,7 +51,8 @@ class Dino {
         this.updateDino();
     }
     render() {
-        this.ctx.clearRect(0,0,this.canvas.width,this.canvas.width)
+        // FIX 1: Corrected canvas height clearing parameter
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.draw();
         this.update();
         requestAnimationFrame(() => this.render());
